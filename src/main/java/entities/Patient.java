@@ -48,4 +48,17 @@ public class Patient {
     public String getPhoneNumber() {
         return phoneNumber;
     }
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "vaccine=" + vaccine +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", city='" + city + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", peselNumber='" + peselNumber + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
 }

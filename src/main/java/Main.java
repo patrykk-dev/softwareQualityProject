@@ -5,6 +5,7 @@ import builders.PatientBuilder;
 import entities.MedicalStaff;
 import entities.Patient;
 
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,7 +17,7 @@ public class Main {
 
         List<Patient> registeredPatients = new ArrayList<>();
         List<MedicalStaff> registeredMedicalStaff = new ArrayList<>();
-
+        StringBuilder stringToSave = new StringBuilder();
 //        RegistrationDirector registrationDirector = new RegistrationDirector();
 
         if (controls.categoryScreen() == 1) {
@@ -25,6 +26,7 @@ public class Main {
             medicalStaffBuilder.setCiy(controls.cityScreen());
             medicalStaffBuilder.setZipCode(controls.zipCodeScreen());
             List<String> details;
+
             do {
                 details = controls.detailsScreen();
                 medicalStaffBuilder.setFirstName(details.get(0));
@@ -46,14 +48,15 @@ public class Main {
                 System.out.println(medicalStaff.getPeselNumber());
                 System.out.println(medicalStaff.getPhoneNumber());
                 System.out.println("-----");
+                stringToSave.append(medicalStaff.toString());
             }
+            FileManager.saveFile(stringToSave.toString(),"medicalStaff");
         } else {
             PatientBuilder patientBuilder = new PatientBuilder();
             patientBuilder.setVaccine(Vaccine.values()[controls.patientScreen() - 1]);
             patientBuilder.setCiy(controls.cityScreen());
             patientBuilder.setZipCode(controls.zipCodeScreen());
             List<String> details;
-
             do {
                 details = controls.detailsScreen();
                 patientBuilder.setFirstName(details.get(0));
@@ -74,7 +77,10 @@ public class Main {
                 System.out.println(patient.getPeselNumber());
                 System.out.println(patient.getPhoneNumber());
                 System.out.println("-----");
+                stringToSave.append(patient.toString());
             }
+            FileManager.saveFile(stringToSave.toString(),"patient");
+
         }
 
     }

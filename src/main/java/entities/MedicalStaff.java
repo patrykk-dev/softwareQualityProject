@@ -48,4 +48,17 @@ public class MedicalStaff {
     public String getPhoneNumber() {
         return phoneNumber;
     }
+
+    @Override
+    public String toString() {
+        return "MedicalStaff{" +
+                "position=" + position +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", city='" + city + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", peselNumber='" + peselNumber + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
 }
